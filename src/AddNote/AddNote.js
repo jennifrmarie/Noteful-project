@@ -1,0 +1,81 @@
+import React, { Component } from 'react'
+import NotefulForm from '../NotefulForm/NotefulForm'
+import NotefulContext from '../NotefulContext'
+import './AddNote.css'
+
+
+export default class AddNote extends Component {
+  static defaultProps = {
+    history: {
+      push: () => { }
+    },
+  }
+  static contextType = NotefulContext;
+
+  handleSubmit = e => {
+    e.preventDefault()
+    const newNote = {
+      name: e.target['note-name'].value,
+      content: e.target['note-content'].value,
+      folderId: e.target['note-folder-id'].value,
+    }
+    fetch(`http://localhost:9090/notes`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(newNote),
+    })
+      .then(response => {
+        if (!response.ok)
+          return response.json()
+      })
+      .then(note => {
+        this.props.history.push(`/folder/${note.folderId}`)
+      })
+      .catch(error => {
+        console.error({ error })
+      })
+  }
+
+  render() {
+    const { folders=[] } = this.context
+    return (
+      <section className='AddNote'>
+        <h2>Write a note</h2>
+        <NotefulForm onSubmit={this.handleSubmit}>
+          <div className='field'>
+            <label htmlFor='note-name-input'>
+              Name
+            </label>
+            <input type='text' id='note-name-input' name='note-name' />
+          </div>
+          <div className='field'>
+            <label htmlFor='note-content-input'>
+              Content
+            </label>
+            <textarea id='note-content-input' name='note-content' />
+          </div>
+          <div className='field'>
+            <label htmlFor='note-folder-select'>
+              Folder
+            </label>
+            <select id='note-folder-select' name='note-folder-id'>
+              {folders.map(folder =>
+                <option key={folder.id} value={folder.id}>
+                  {folder.name}
+                </option>
+              )}
+            </select>
+          </div>
+          <div className='buttons'>
+            <button 
+              type='submit'>
+              Add note
+            </button>
+          </div>
+        </NotefulForm>
+      </section>
+    )
+  }
+}

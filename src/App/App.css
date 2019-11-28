@@ -1,0 +1,23 @@
+.App {
+  display:flex;
+  /* flex-direction: column; */
+  text-align: center;
+  background-color: #303030;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.App__header {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: white;
+  display: flex;
+  text-align: center;
+  padding-top: 100px;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+

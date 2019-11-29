@@ -1,5 +1,7 @@
 .NoteListMain {
   width: 500px;
+  margin-top: 30px;
+  margin-bottom: 100px;
 }
 
 .NoteNav__list {
@@ -8,8 +10,8 @@
   /* height: 100px; */
   justify-content: center;
   padding-right: 30px;
-  margin-top: 30px;
-  margin-left: 15px;
+
+  margin-left: 25px;
   list-style: none;
   
  
@@ -21,7 +23,7 @@
   background-color: white;
   border: 1px solid black;
   font-size: 20px;
-  height: 90px;
+  height: 10%;
   width: 70%;
   padding: 20px;
 }
@@ -30,11 +32,21 @@ a {
   color: black;
 }
 
-.NoteListNav__button {
+.NoteListNavNote__button {
   background-color: white;
-  /* margin-left: 80px; */
+  margin-left: 200px;
+  margin-bottom: 50px;
+  position: relative;
+  left: -10px;
+  padding-top: 5px;
   width: 70px;
-  height: 70px;
+  height: 60px;
+  border: 1px solid black;
   border-radius: 150em;
   margin-top: 20px;
+}
+
+
+h1 {
+  margin-right: 30px
 }

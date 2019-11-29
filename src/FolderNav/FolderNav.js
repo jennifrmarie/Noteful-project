@@ -13,6 +13,7 @@ export default class NoteListNav extends React.Component {
     console.log(this.context)
     return (
       <div className='FolderNav'>
+        <h1> Folders:</h1>
         <ul className='FolderNav__list'>
           {folders.map(folder =>
             <li 

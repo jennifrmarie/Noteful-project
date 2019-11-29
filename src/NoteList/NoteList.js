@@ -24,6 +24,7 @@ export default class NoteListMain extends React.Component {
     const notesForFolder = getNotesForFolder(notes, folderId)
     return (
       <section className='NoteListMain'>
+        <h1>Notes:</h1>
         <ul className="NoteNav__list">
           {notesForFolder.map(note =>
             <li 
@@ -37,7 +38,7 @@ export default class NoteListMain extends React.Component {
             </li>
           )}
         </ul>
-        <div className='NoteListNav__button'>
+        <div className='NoteListNavNote__button'>
           <NavButton
             tag={Link}
             to='/add-note'

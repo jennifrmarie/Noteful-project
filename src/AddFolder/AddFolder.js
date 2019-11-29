@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import NotefulForm from '../NotefulForm/NotefulForm'
 import NotefulContext from '../NotefulContext'
 import NavButton from '../NavButton/NavButton'
-
+import './AddFolder.css'
 export default class AddFolder extends Component {
   static defaultProps = {
     history: {

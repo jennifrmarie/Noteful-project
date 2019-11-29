@@ -1,17 +1,6 @@
-/* .Note__delete {
-  position: relative;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  transform-origin: right bottom;
-  top: -143px;
-  left: 100px;
-  height: 40px;
-  width: 129px;
-  transform: rotate(-90deg);
-  font-size: 15px;
-  letter-spacing: 3px;
-  background-color: #777373dc;
+.Note__delete {
+  background-color:#303030;
   color: white;
   text-transform: uppercase;
   text-emphasis: bold;
-} */
+}

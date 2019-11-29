@@ -1,5 +1,6 @@
 .FolderNav {
   min-width: 300px;
+  margin-top: 130px;
 }
 .FolderNav__list {
   display: flex;
@@ -8,12 +9,16 @@
   text-decoration: none;
   flex-grow: 2;
   padding-right: 30px;
-  margin-top: 130px;
+
   margin-right: 60px;
   list-style: none;
   
  
   
+}
+
+h1 {
+  color: white;
 }
 
 .Folder__list {

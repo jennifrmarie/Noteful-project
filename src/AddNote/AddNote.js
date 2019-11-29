@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import NotefulForm from '../NotefulForm/NotefulForm'
 import NotefulContext from '../NotefulContext'
 import NavButton from '../NavButton/NavButton'
-import PropTypes from 'prop-types'
 import './AddNote.css'
 
 
@@ -49,19 +48,19 @@ export default class AddNote extends Component {
         
           <div className='field'>
             <label htmlFor='note-name-input'>
-              Name
+              Name:
             </label>
             <input type='text' id='note-name-input' name='note-name' />
           </div>
           <div className='field'>
             <label htmlFor='note-content-input'>
-              Content
+              Content:
             </label>
             <textarea id='note-content-input' name='note-content' />
           </div>
           <div className='field'>
             <label htmlFor='note-folder-select'>
-              Folder
+              Folder:
             </label>
             <select id='note-folder-select' name='note-folder-id'>
               {folders.map(folder =>

@@ -44,11 +44,13 @@ export default class NoteListMain extends React.Component {
             type='button'
             className='NoteListMain__add-note-button'
           >
+            + 
             <br />
-            + Note
+            Note
           </NavButton>
         </div>
       </section>
     )
   }
 }
+

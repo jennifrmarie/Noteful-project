@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import NotefulForm from '../NotefulForm/NotefulForm'
 import NotefulContext from '../NotefulContext'
-// import './AddFolder.css'
+import NavButton from '../NavButton/NavButton'
 
 export default class AddFolder extends Component {
   static defaultProps = {
@@ -53,6 +53,15 @@ export default class AddFolder extends Component {
             </button>
           </div>
         </NotefulForm>
+        <NavButton
+          tag='button'
+          role='link'
+          onClick={() => this.props.history.goBack()}
+          className='NotePage__back-button'
+        >
+          <br />
+          Back
+        </NavButton>
       </section>
     )
   }

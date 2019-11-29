@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import NotefulForm from '../NotefulForm/NotefulForm'
 import NotefulContext from '../NotefulContext'
+import NavButton from '../NavButton/NavButton'
+import PropTypes from 'prop-types'
 import './AddNote.css'
 
 
@@ -44,6 +46,7 @@ export default class AddNote extends Component {
       <section className='AddNote'>
         <h2>Write a note</h2>
         <NotefulForm onSubmit={this.handleSubmit}>
+        
           <div className='field'>
             <label htmlFor='note-name-input'>
               Name
@@ -74,8 +77,19 @@ export default class AddNote extends Component {
               Add note
             </button>
           </div>
+          
         </NotefulForm>
+        <NavButton
+          tag='button'
+          role='link'
+          onClick={() => this.props.history.goBack()}
+          className='NotePage__back-button'
+        >
+          <br />
+          Back
+        </NavButton>
       </section>
     )
   }
 }
+

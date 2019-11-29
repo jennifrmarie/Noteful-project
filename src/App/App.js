@@ -55,8 +55,6 @@ class App extends Component {
                     />
                 ))}
                 <Route path="/note/:noteId" component={NotePageNav} />
-                <Route path="/add-folder" component={AddFolder} />
-                <Route path="/add-note" component={AddNote} />
             </React.Fragment>
         );
     }
@@ -75,6 +73,8 @@ class App extends Component {
                     
                 ))}
                 <Route path="/note/:noteId" component={NotePageMain} />
+                <Route path="/add-folder" component={AddFolder} />
+                <Route path="/add-note" component={AddNote} />
             </React.Fragment>
             
         );

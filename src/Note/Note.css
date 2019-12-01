@@ -1,6 +1,24 @@
 .Note__delete {
   background-color:#303030;
   color: white;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   text-emphasis: bold;
+  /* float: right; */
+  position: absolute; left: 243px; top: 57px;
+}
+
+.Date {
+  float: left;
+  font-size: 10px;
+  position: relative;
+  top: 15px;
+}
+
+.Note {
+  position: relative; bottom: 0; left: 0; right: 0;
+}
+
+.Note__title {
+  font-size: 20px;
+
 }

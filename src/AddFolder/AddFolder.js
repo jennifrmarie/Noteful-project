@@ -29,6 +29,7 @@ export default class AddFolder extends Component {
         return res.json()
       })
       .then(folder => {
+        this.context.addFolder(folder)
         this.props.history.push(`/folder/${folder.id}`)
       })
       .catch(error => {
@@ -53,7 +54,7 @@ export default class AddFolder extends Component {
             </button>
           </div>
         </NotefulForm>
-        <NavButton
+        {/* <NavButton
           tag='button'
           role='link'
           onClick={() => this.props.history.goBack()}
@@ -61,7 +62,7 @@ export default class AddFolder extends Component {
         >
           <br />
           Back
-        </NavButton>
+        </NavButton> */}
       </section>
     )
   }

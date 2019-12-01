@@ -2,6 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import NotefulContext from '../NotefulContext'
 import './Note.css'
+import { format } from 'date-fns'
+import propTypes from 'prop-types';
+
 
 export default class Note extends React.Component {
   static defaultProps ={
@@ -34,14 +37,20 @@ export default class Note extends React.Component {
   }
 
   render() {
-    const { name, id } = this.props
+    const { name, id, modified } = this.props
     return (
       <div className='Note'>
-        <h2 className='Note__title'>
+        {/* <h2 className='Note__title'> */}
           <Link to={`/note/${id}`}>
-            {name}
+            {/* {name} <br /> */}
+            <button className="Note__title">{name}</button>
           </Link>
-        </h2>
+        {/* </h2> */}
+        <div className="Modfied__dates">
+          <span className="Date">
+            {format(modified, 'MMMM Do, YYYY')}
+          </span>
+        </div>
         <button
           className='Note__delete'
           type='button'
@@ -49,7 +58,15 @@ export default class Note extends React.Component {
         >
           remove
         </button>
+
       </div>
     )
   }
+
+}
+
+Note.propTypes = {
+  id: propTypes.string.isRequired,
+  modified: propTypes.string,
+  name: propTypes.string.isRequired
 }

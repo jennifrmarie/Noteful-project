@@ -4,12 +4,13 @@ import Note from '../Note/Note'
 import NavButton from '../NavButton/NavButton'
 import NotefulContext from '../NotefulContext'
 import './NoteList.css'
+// import { getNotesForFolder } from '../notes-helpers';
 
 export default class NoteListMain extends React.Component {
   static defaultProps = {
     match: {
       params: {}
-    }
+    },
   }
   static contextType = NotefulContext
 
@@ -17,11 +18,11 @@ export default class NoteListMain extends React.Component {
     const { folderId } = this.props.match.params
     const { notes=[] } = this.context
     const getNotesForFolder = (notes=[], folderId) => (
-      (!folderId)
-        ? notes
-        : notes.filter(note => note.folderId === folderId)
+        notes.filter(note => note.folderId === folderId)
     )
+    console.log(getNotesForFolder)
     const notesForFolder = getNotesForFolder(notes, folderId)
+    console.log(notesForFolder)
     return (
       <section className='NoteListMain'>
         <h1>Notes:</h1>
@@ -34,6 +35,7 @@ export default class NoteListMain extends React.Component {
               <Note
                 id={note.id}
                 name={note.name}
+                modified={note.modified}
               />
             </li>
           )}

@@ -3,6 +3,7 @@ import NotefulForm from '../NotefulForm/NotefulForm'
 import NotefulContext from '../NotefulContext'
 import NavButton from '../NavButton/NavButton'
 import './AddNote.css'
+import moment from 'moment';
 
 
 export default class AddNote extends Component {
@@ -15,10 +16,12 @@ export default class AddNote extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
+
     const newNote = {
       name: e.target['note-name'].value,
       content: e.target['note-content'].value,
       folderId: e.target['note-folder-id'].value,
+      modified: moment(),
     }
     fetch(`http://localhost:9090/notes`, {
       method: 'POST',
@@ -29,9 +32,12 @@ export default class AddNote extends Component {
     })
       .then(response => {
         if (!response.ok)
-          return response.json()
+          return response.json().then(e => Promise.reject(e))
+        return response.json()
       })
       .then(note => {
+        console.log(note)
+        this.context.addNote(note)
         this.props.history.push(`/folder/${note.folderId}`)
       })
       .catch(error => {

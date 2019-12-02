@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import NotefulForm from '../NotefulForm/NotefulForm'
 import NotefulContext from '../NotefulContext'
-import NavButton from '../NavButton/NavButton'
+import ValidationError from '../ValidationError'
 import './AddFolder.css'
 export default class AddFolder extends Component {
   static defaultProps = {
@@ -10,6 +10,27 @@ export default class AddFolder extends Component {
     },
   }
   static contextType = NotefulContext;
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: {
+        value: '',
+        touched: false
+      }
+    }
+  }
+
+  updateName(name) {
+    this.setState({name: {value: name, touched: true}});
+  }
+
+  validateName(textarea) {
+    const name = this.state.name.value.trim();
+    if (name.length === 0) {
+      return 'Name is required';
+    }
+  }
 
   handleSubmit = e => {
     e.preventDefault()
@@ -46,23 +67,17 @@ export default class AddFolder extends Component {
             <label htmlFor='folder-name-input'>
               Name
             </label>
-            <input type='text' id='folder-name-input' name='folder-name' />
+            <input type='text' id='folder-name-input' name='folder-name' onChange={e => this.updateName(e.target.value)} />
+            <ValidationError message={this.validateName()} />
           </div>
           <div className='buttons'>
-            <button type='submit'>
+            <button type='submit'
+              disabled={this.validateName()}
+            >
               Add folder
             </button>
           </div>
         </NotefulForm>
-        {/* <NavButton
-          tag='button'
-          role='link'
-          onClick={() => this.props.history.goBack()}
-          className='NotePage__back-button'
-        >
-          <br />
-          Back
-        </NavButton> */}
       </section>
     )
   }

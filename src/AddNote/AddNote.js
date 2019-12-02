@@ -3,6 +3,7 @@ import NotefulForm from '../NotefulForm/NotefulForm'
 import NotefulContext from '../NotefulContext'
 import NavButton from '../NavButton/NavButton'
 import './AddNote.css'
+import ValidationError from '../ValidationError'
 import moment from 'moment';
 
 
@@ -13,6 +14,46 @@ export default class AddNote extends Component {
     },
   }
   static contextType = NotefulContext;
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: {
+        value: '',
+        touched: false
+      },
+      content: {
+        value: '',
+        touched: false
+      },
+      folder: {
+        value: ''
+      }
+    }
+  }
+
+  updateName(name) {
+    this.setState({name: {value: name, touched: true}});
+  }
+
+  updateContent(content) {
+    this.setState({content: {value: content, touched: true}});
+  }
+
+  validateName(textarea) {
+    const name = this.state.name.value.trim();
+    if (name.length === 0) {
+      return 'Name is required';
+    }
+  }
+
+  validateContent(textarea) {
+    const content = this.state.content.value.trim();
+    if (content.length === 0) {
+      return 'Content is required';
+    }
+  }
+
 
   handleSubmit = e => {
     e.preventDefault()
@@ -56,13 +97,15 @@ export default class AddNote extends Component {
             <label htmlFor='note-name-input'>
               Name:
             </label>
-            <input type='text' id='note-name-input' name='note-name' />
+            <input type='text' id='note-name-input' name='note-name' onChange={e => this.updateName(e.target.value)} />
+            <ValidationError message={this.validateName()} />
           </div>
           <div className='field'>
             <label htmlFor='note-content-input'>
               Content:
             </label>
-            <textarea id='note-content-input' name='note-content' />
+            <textarea id='note-content-input' name='note-content' onChange={e => this.updateContent(e.target.value)} />
+            <ValidationError message={this.validateContent()} />
           </div>
           <div className='field'>
             <label htmlFor='note-folder-select'>
@@ -78,7 +121,11 @@ export default class AddNote extends Component {
           </div>
           <div className='buttons'>
             <button 
-              type='submit'>
+              type='submit'
+              disabled={
+                this.validateName()||
+                this.validateContent()}
+                >
               Add note
             </button>
           </div>

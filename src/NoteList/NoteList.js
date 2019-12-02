@@ -6,7 +6,7 @@ import NotefulContext from '../NotefulContext'
 import './NoteList.css'
 // import { getNotesForFolder } from '../notes-helpers';
 
-export default class NoteListMain extends React.Component {
+export default class NoteList extends React.Component {
   static defaultProps = {
     match: {
       params: {}
@@ -18,7 +18,9 @@ export default class NoteListMain extends React.Component {
     const { folderId } = this.props.match.params
     const { notes=[] } = this.context
     const getNotesForFolder = (notes=[], folderId) => (
-        notes.filter(note => note.folderId === folderId)
+      (!folderId)
+        ? notes
+        : notes.filter(note => note.folderId === folderId)
     )
     console.log(getNotesForFolder)
     const notesForFolder = getNotesForFolder(notes, folderId)

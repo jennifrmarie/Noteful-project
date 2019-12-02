@@ -5,7 +5,7 @@ import NotefulContext from '../NotefulContext'
 import './FolderNav.css'
 
 
-export default class NoteListNav extends React.Component {
+export default class FolderNav extends React.Component {
   static contextType = NotefulContext;
 
   render() {
